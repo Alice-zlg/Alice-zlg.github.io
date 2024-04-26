@@ -42,25 +42,6 @@
     
     
     <entry>
-      <title>闭包</title>
-      <link href="/2024/04/06/homeWork2/"/>
-      <url>/2024/04/06/homeWork2/</url>
-      
-        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> javascript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>作业1,使用循环打印基础图形</title>
       <link href="/2024/04/06/homeWork1/"/>
       <url>/2024/04/06/homeWork1/</url>
@@ -78,14 +59,33 @@
     </entry>
     
     
+    
+    <entry>
+      <title>闭包</title>
+      <link href="/2024/04/06/homeWork2/"/>
+      <url>/2024/04/06/homeWork2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
     
     
     <entry>
-      <title></title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -105,9 +105,9 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -116,9 +116,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title></title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
