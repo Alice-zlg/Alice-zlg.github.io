@@ -83,17 +83,6 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
@@ -105,9 +94,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -119,6 +108,17 @@
       <title>tags</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
