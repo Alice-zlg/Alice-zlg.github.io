@@ -43,8 +43,8 @@
     
     <entry>
       <title>实验4-web页面广告制作</title>
-      <link href="/2024/10/28/shiyan4/"/>
-      <url>/2024/10/28/shiyan4/</url>
+      <link href="/2024/04/27/shiyan4/"/>
+      <url>/2024/04/27/shiyan4/</url>
       
         <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">closeCouplet</span>(<span class="params">coupletId</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> couplet = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(coupletId);</span><br><span class="line">    couplet.<span class="property">style</span>.<span class="property">visibility</span> = <span class="string">&#x27;hidden&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> intervalId;</span><br><span class="line"></span><br><span class="line"><span class="title function_">startInterval</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">startInterval</span>(<span class="params"></span>) &#123;</span><br><span class="line">    intervalId = <span class="built_in">setInterval</span>(down, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">down</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> down = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;couplet-down&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> style = <span class="variable language_">window</span>.<span class="title function_">getComputedStyle</span>(down);</span><br><span class="line">    down.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;flex&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> top = <span class="built_in">parseInt</span>(style.<span class="title function_">getPropertyValue</span>(<span class="string">&quot;top&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (top &gt; <span class="number">320</span>) &#123;</span><br><span class="line">        down.<span class="property">style</span>.<span class="property">top</span> = (top - <span class="number">0.1</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">clearInterval</span>(intervalId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><style>    /* 所有元素都采用弹性布局，水平分布 */    .all {        display: flex;        justify-content: space-between;    }    /* 左侧和右侧对联样式 */    #couplet-left, #couplet-right {        height: 300px;        position: sticky; /* 让页面标签在滚动时固定 */        top: 0;        z-index: 1000; /* 确保在其他内容之上 */    }    /* 左侧和右侧对联的图片样式 */    #img-left, #img-right {        width: 200px;        height: 300px;    }    /* 内容区域样式 */    #content {        width: 800px;        height: 1500px;        background-color: aqua;    }    /* 关闭按钮样式 */    #close-couplet-left, #close-couplet-right,#close-couplet-down {        background-color: black;        color: white;        position: absolute; /* 绝对定位 */        top: 5px;        right: 5px;        border: none; /* 去除边框 */        padding: 5px 10px; /* 上下 5px，左右 10px 的内边距 */        cursor: pointer; /* 设置鼠标样式为手型 */    }    /* 下方对联样式 */    #couplet-down {        position: absolute; /* 绝对定位 */        top: 2300px;        left: 150px;        z-index: 1000; /* 确保在其他内容之上 */    }    /* 下方对联的图片样式 */    #img-down {        width: 200px;        height: 200px;    }</style><div class="all">    <div id="couplet-left">        <img id="img-left" src="https://img2.imgtp.com/2024/04/27/9Vub4ETq.png" alt="">        <button onclick="closeCouplet('couplet-left')" id="close-couplet-left">关闭</button>    </div>    <div id="content">1</div>    <div id="couplet-right">        <img id="img-right" src="https://img2.imgtp.com/2024/04/27/tFhZGONP.png" alt=""/>        <button onclick="closeCouplet('couplet-right')" id="close-couplet-right">关闭</button>    </div>    <div id="couplet-down" style="display: none">        <img src="https://img2.imgtp.com/2024/04/27/XdXkejvV.png" id="img-down" alt="" />        <button onclick="closeCouplet('couplet-down')" id="close-couplet-down">关闭</button>    </div></div><script>    function closeCouplet(coupletId) {        let couplet = document.getElementById(coupletId);        couplet.style.visibility = 'hidden';    }    let intervalId;    startInterval();    function startInterval() {        intervalId = setInterval(down, 1);    }    function down() {        let down = document.getElementById('couplet-down');        let style = window.getComputedStyle(down);        down.style.display = 'flex';        let top = parseInt(style.getPropertyValue("top"));        if (top > 1000) {            down.style.top = (top - 0.1) + "px";        } else {            clearInterval(intervalId);        }    }</script>]]></content>
       
@@ -53,25 +53,6 @@
         <tags>
             
             <tag> css,javascript,html </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>闭包</title>
-      <link href="/2024/04/06/homeWork2/"/>
-      <url>/2024/04/06/homeWork2/</url>
-      
-        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> javascript </tag>
             
         </tags>
       
@@ -97,14 +78,33 @@
     </entry>
     
     
+    
+    <entry>
+      <title>闭包</title>
+      <link href="/2024/04/06/homeWork2/"/>
+      <url>/2024/04/06/homeWork2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
+      <title></title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -124,9 +124,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
