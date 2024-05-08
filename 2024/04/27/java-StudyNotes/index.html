@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>微服务的相关学习笔记 | Black</title><meta name="author" content="zlg"><meta name="copyright" content="zlg"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="工具类包-StrUtilString字符串工具包 提供了大量的字符串相关方法 依赖导入123456&lt;!--StringUtils工具类 --&gt;&lt;dependency&gt;    &lt;groupId&gt;org.apache.commons&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;commons-lang3&lt;&#x2F;artifactId&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务的相关学习笔记">
+<meta property="og:url" content="https://alice-zlg.github.io/2024/04/27/java-StudyNotes/index.html">
+<meta property="og:site_name" content="Black">
+<meta property="og:description" content="工具类包-StrUtilString字符串工具包 提供了大量的字符串相关方法 依赖导入123456&lt;!--StringUtils工具类 --&gt;&lt;dependency&gt;    &lt;groupId&gt;org.apache.commons&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;commons-lang3&lt;&#x2F;artifactId&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img2.imgtp.com/2024/05/03/hwVsepY0.png">
+<meta property="article:published_time" content="2024-04-27T06:46:00.000Z">
+<meta property="article:modified_time" content="2024-05-07T10:03:49.675Z">
+<meta property="article:author" content="zlg">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2.imgtp.com/2024/05/03/hwVsepY0.png"><link rel="shortcut icon" href="https://img2.imgtp.com/2024/04/06/4Ggs7vAx.jpg"><link rel="canonical" href="https://alice-zlg.github.io/2024/04/27/java-StudyNotes/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微服务的相关学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-07 18:03:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="./source/css/universe.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img2.imgtp.com/2024/04/06/RG8vej6N.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img2.imgtp.com/2024/05/03/hwVsepY0.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Black"><span class="site-name">Black</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微服务的相关学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-27T06:46:00.000Z" title="发表于 2024-04-27 14:46:00">2024-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-07T10:03:49.675Z" title="更新于 2024-05-07 18:03:49">2024-05-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="微服务的相关学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="工具类包-StrUtil"><a href="#工具类包-StrUtil" class="headerlink" title="工具类包-StrUtil"></a>工具类包-StrUtil</h2><p>String字符串工具包 提供了大量的字符串相关方法</p>
+<h3 id="依赖导入"><a href="#依赖导入" class="headerlink" title="依赖导入"></a>依赖导入</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--StringUtils工具类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StrUtil.方法名()</span><br></pre></td></tr></table></figure>
+
+<p>isNotBlank</p>
+<p>用于判断字符串是否为空，null，””，等等</p>
+<h2 id="对于不同的包的配置类如何生效"><a href="#对于不同的包的配置类如何生效" class="headerlink" title="对于不同的包的配置类如何生效"></a>对于不同的包的配置类如何生效</h2><p>在resource目录下的 META-INF 创建spring.factories文件<br>早期是使用spring.factories<br>现在改为EnableAutoConfiguration<br>配置类中写对应的类路径</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span></span><br><span class="line"><span class="string">对应类路径</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多个路径使用-隔开"><a href="#多个路径使用-隔开" class="headerlink" title="多个路径使用,\隔开"></a>多个路径使用,\隔开</h3><h3 id="对于不想要生效的配置类"><a href="#对于不想要生效的配置类" class="headerlink" title="对于不想要生效的配置类"></a>对于不想要生效的配置类</h3><h4 id="使用-Conditional"><a href="#使用-Conditional" class="headerlink" title="使用 @Conditional"></a>使用 @Conditional</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ConditionalOnClass()</span><br></pre></td></tr></table></figure>
+
+<p>对于注解@ConditionalOnClass() 参数为 类.class 没有对应类将不进行注入</p>
+<h2 id="微服务与微服务之间的数据传输"><a href="#微服务与微服务之间的数据传输" class="headerlink" title="微服务与微服务之间的数据传输"></a>微服务与微服务之间的数据传输</h2><p>一个微服务在与另一个微服务进行数据交互时用 OpenFeign 发起的远程调用不会自动传递信息</p>
+<p>需要自己定义拦截器，添加请求头</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> RequestInterceptor <span class="title function_">userInfoRequestInterceptor</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RequestInterceptor</span>() &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">apply</span><span class="params">(RequestTemplate template)</span> &#123;</span><br><span class="line">            <span class="type">Long</span> <span class="variable">userId</span> <span class="operator">=</span> UserContext.getUser();</span><br><span class="line">            <span class="keyword">if</span> (userId != <span class="literal">null</span>)&#123;</span><br><span class="line">                template.header(<span class="string">&quot;user-info&quot;</span>, userId.toString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="OpenFeign的使用需要开启注解"><a href="#OpenFeign的使用需要开启注解" class="headerlink" title="OpenFeign的使用需要开启注解"></a>OpenFeign的使用需要开启注解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients(basePackages = &quot;com.zlg.api.client&quot;,defaultConfiguration = DefaultFeignConfig.class)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="微服务配置管理"><a href="#微服务配置管理" class="headerlink" title="微服务配置管理"></a>微服务配置管理</h2><img src="https://img2.imgtp.com/2024/04/27/pERzUWKl.png" alt="">
+
+<h3 id="1-添加配置到-Nacos-配置中心"><a href="#1-添加配置到-Nacos-配置中心" class="headerlink" title="1.添加配置到 Nacos 配置中心"></a>1.添加配置到 Nacos 配置中心</h3><img src="https://img2.imgtp.com/2024/04/29/9VPoAAUN.png" alt="" />
+
+<p>对于需要动态修改的配置内容使用 “${}” 变量 的方式作为占位符,然后在需要改动的配置中进行变量的赋值</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">hm:</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">pw:</span> <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 ${ :} 表示如果没有进行变量赋值时的默认值</p>
+<h3 id="2-拉取共享配置"><a href="#2-拉取共享配置" class="headerlink" title="2.拉取共享配置"></a>2.拉取共享配置</h3><p>springCloud 启动的流程</p>
+<img src="https://img2.imgtp.com/2024/04/29/uCqc3iPK.png" alt="">
+
+<ol>
+<li>通过xml依赖引入，拉取配置文件和读取 bootstrap 文件</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--nacos配置管理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--读取bootstrap文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>新建 bootstrap.yaml 配置文件 配置nacos和共享配置文件的配置</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cart-service</span> <span class="comment"># 微服务名称</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># nacos地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment"># 文件后缀名</span></span><br><span class="line">        <span class="attr">shared-configs:</span> <span class="comment"># 共享配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-jdbc.yaml</span> <span class="comment"># 共享配置文件id</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置热更新"><a href="#配置热更新" class="headerlink" title="配置热更新"></a>配置热更新</h2><p>通过修改nacos中的配置可以实现不重启项目实现更新项目<br>这边通过配置一个变量来演示</p>
+<p>自定义的配置类和参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;hm.cart&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CartProperties</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>  Integer maxItems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际的使用场景</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">checkCartsFull</span><span class="params">(Long userId)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> lambdaQuery().eq(Cart::getUserId, userId).count();</span><br><span class="line">    <span class="keyword">if</span> (count &gt;= cartProperties.getMaxItems()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizIllegalException</span>(StrUtil.format(<span class="string">&quot;用户购物车课程不能超过&#123;&#125;&quot;</span>, cartProperties.getMaxItems()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>nacos 中的配置<br><img src="https://img2.imgtp.com/2024/05/05/biKpxP8Y.png" ><br>nacos 配置的命名规范<br><img src="https://img2.imgtp.com/2024/05/05/vatViBTq.png" ></p>
+<p>然后就可以实现修改nacos中的配置文件达到项目的修改-简称”热更新”</p>
+<h2 id="雪崩问题"><a href="#雪崩问题" class="headerlink" title="雪崩问题"></a>雪崩问题</h2><p>什么是雪崩问题：见名知义，就是在为服务中由于一个微服务模块的故障导致链路中的所有服务都无法使用</p>
+<h3 id="保护方案"><a href="#保护方案" class="headerlink" title="保护方案"></a>保护方案</h3><ol>
+<li>请求限流-流量整形<br>限制接口的请求并发数量，避免服务因流量激增出现故障 将原本忽高忽低的请求量限制在一定的范围上</li>
+<li>线程隔离-舱壁模式<br>模拟船舱隔板的防水原理。通过限定每个业务能够使用的线程数量而将故障隔离，避免故障扩散。</li>
+<li>服务熔断<br>由断路器统计请求的异常比例或调慢比例，如果超出阈值则熔断该业务，则拦截该接口的请求。 熔断期间，所有请求快速失败，全部走fallback逻辑</li>
+</ol>
+<h3 id="保护技术"><a href="#保护技术" class="headerlink" title="保护技术"></a>保护技术</h3><img src="https://img2.imgtp.com/2024/05/05/cYQ1lGBz.png" alt="">
+
+<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h4 id="1-启动-sentinel"><a href="#1-启动-sentinel" class="headerlink" title="1.启动 sentinel"></a>1.启动 sentinel</h4><p>通过阿里巴巴的 sentinel-dashboard 实现<br>下载相关的jar包，使用java虚拟机运行后访问<br>相关启动命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar</span><br></pre></td></tr></table></figure>
+
+<p>注意: jar包的位置不能存在中文字符</p>
+<p>启动成功后在浏览器输入对应的端口号就能进入登录页面</p>
+<img src="https://img2.imgtp.com/2024/05/06/z6yUPpwP.png" alt="">
+
+<p>用户名和密码都是 sentinel<br>进入控制台后就可以通过控制台实现对项目相关的各种控制了</p>
+<h4 id="2-联系项目"><a href="#2-联系项目" class="headerlink" title="2. 联系项目"></a>2. 联系项目</h4><p>导入sentinel依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--sentinel--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-sentinel<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置控制台</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8090</span></span><br></pre></td></tr></table></figure>
+
+<p>然后访问项目接口就可以实现监控了<br>簇点链路是单机调用链路，默认情况会监控springmvc每一个Endpoint(接口) 也就是controller层的请求<br>但是默认情况下簇点展示的是接口的路径，通过restful风格编设计的接口，有些路径会产生相同路径，需要开启Sentinel的请求方式前缀进行区分</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8090</span></span><br><span class="line">      <span class="attr">http-method-specify:</span> <span class="literal">true</span> <span class="comment"># 开启请求方式前缀</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-请求限流"><a href="#3-请求限流" class="headerlink" title="3. 请求限流"></a>3. 请求限流</h4><p>直接点击相关路径的流控按钮就可以进行限流的的控制</p>
+<img src="https://img2.imgtp.com/2024/05/06/kN2Bp9fa.png" alt="">
+
+<h4 id="4-线程隔离"><a href="#4-线程隔离" class="headerlink" title="4. 线程隔离"></a>4. 线程隔离</h4><p>线程需要隔离是因为微服务相互调用导致线程资源的占用<br>涉及到微服务就需要开启Feign的Sentinel功能</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">sentinel:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启feign对sentinel的支持</span></span><br></pre></td></tr></table></figure>
+
+<p>小提示： 默认情况下tomcat最大线程数是200,允许的最大连接是8192<br>开启之后，远程调用微服务的请求就会被识别为一个簇点资源<br>然后对相关簇点进行限流就可以了</p>
+<h4 id="5-fallback"><a href="#5-fallback" class="headerlink" title="5. fallback"></a>5. fallback</h4><p>对于触发了限流或者熔断的操作并非需要抛出异常，这是就可以使用fallback的方式，使用日志的形式来处理此类情况<br>给FeignClient编写失败后的降级逻辑有两种方式</p>
+<ol>
+<li>FallbackClass 缺点：无法对远程调用的异常做出处理（偏向于快速启用的偷懒方式）</li>
+<li>FallbackFactory 可以对远程调用的异常做出处理，一般采取这种方式</li>
+</ol>
+<p>使用FallbackFactory的方式</p>
+<ol>
+<li>在公共的微服务请求转发模块建立工厂</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ItemClientFallback</span> <span class="keyword">implements</span> <span class="title class_">FallbackFactory</span>&lt;ItemClient&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ItemClient <span class="title function_">create</span><span class="params">(Throwable cause)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ItemClient</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> List&lt;ItemDTO&gt; <span class="title function_">queryItemByIds</span><span class="params">(Collection&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">                log.error(<span class="string">&quot;远程调用ItemClient#queryItemByIds方法出现异常，参数：&#123;&#125;&quot;</span>, ids, cause);</span><br><span class="line">                <span class="comment">// 查询购物车允许失败，查询失败，返回空集合</span></span><br><span class="line">                <span class="keyword">return</span> CollUtils.emptyList();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deductStock</span><span class="params">(List&lt;OrderDetailDTO&gt; items)</span> &#123;</span><br><span class="line">                <span class="comment">// 库存扣减业务需要触发事务回滚，查询失败，抛出异常</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizIllegalException</span>(cause);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>核心部分在于继承 FallbackFactory 接口 和请求失败后的业务逻辑处理</p>
+<ol start="2">
+<li>然后将工厂注册为bean</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ItemClientFallback <span class="title function_">itemClientFallback</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ItemClientFallback</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>最后在定义的转发接口中使用工厂</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;item-service&quot;,</span></span><br><span class="line"><span class="meta">        configuration = DefaultFeignConfig.class,</span></span><br><span class="line"><span class="meta">        fallback = ItemClientFallback.class)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-服务熔断"><a href="#6-服务熔断" class="headerlink" title="6. 服务熔断"></a>6. 服务熔断</h4><p>熔断的过程<br><img src="https://img2.imgtp.com/2024/05/07/dfekcDUQ.png"></p>
+<p>熔断配置<br><img src="https://img2.imgtp.com/2024/05/07/N76s3wgw.png"></p>
+<h4 id="7-持久化保存配置"><a href="#7-持久化保存配置" class="headerlink" title="7. 持久化保存配置"></a>7. 持久化保存配置</h4><p>使用jar包启动的控制台配置，在刷新页面就会丢失相应的配置<br>所有需要持久化的保存的话需要新的方法<br>这里使用的是nacos的方式进行配置的持久化保存</p>
+<ol>
+<li>引入依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-datasource-nacos<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>具体的版本号要和sentinel的版本号对应</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Alice-zlg.github.io">zlg</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alice-zlg.github.io/2024/04/27/java-StudyNotes/">https://alice-zlg.github.io/2024/04/27/java-StudyNotes/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Alice-zlg.github.io" target="_blank">Black</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/">java</a></div><div class="post_share"><div class="social-share" data-image="https://img2.imgtp.com/2024/05/03/hwVsepY0.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/28/java-Security/" title="Spring Security学习笔记"><img class="cover" src="https://img2.imgtp.com/2024/05/03/Q4R60m6o.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring Security学习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/27/shiyan4/" title="实验4-web页面广告制作"><img class="cover" src="https://img2.imgtp.com/2024/04/06/f1zZ8Zo4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">实验4-web页面广告制作</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/04/29/java-DeviseModel/" title="java设计模式"><img class="cover" src="https://img2.imgtp.com/2024/05/03/plAmrLGa.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-29</div><div class="title">java设计模式</div></div></a></div><div><a href="/2024/04/28/java-Security/" title="Spring Security学习笔记"><img class="cover" src="https://img2.imgtp.com/2024/05/03/Q4R60m6o.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-28</div><div class="title">Spring Security学习笔记</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img2.imgtp.com/2024/04/06/RG8vej6N.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zlg</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Alice-zlg/Alice-zlg.github.io"><i class="fab fa-github"></i><span>前往我的仓库</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hhdcj" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/zlg20030323@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%8C%85-StrUtil"><span class="toc-text">工具类包-StrUtil</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%AF%BC%E5%85%A5"><span class="toc-text">依赖导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%90%8C%E7%9A%84%E5%8C%85%E7%9A%84%E9%85%8D%E7%BD%AE%E7%B1%BB%E5%A6%82%E4%BD%95%E7%94%9F%E6%95%88"><span class="toc-text">对于不同的包的配置类如何生效</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E8%B7%AF%E5%BE%84%E4%BD%BF%E7%94%A8-%E9%9A%94%E5%BC%80"><span class="toc-text">多个路径使用,\隔开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E4%B8%8D%E6%83%B3%E8%A6%81%E7%94%9F%E6%95%88%E7%9A%84%E9%85%8D%E7%BD%AE%E7%B1%BB"><span class="toc-text">对于不想要生效的配置类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Conditional"><span class="toc-text">使用 @Conditional</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="toc-text">微服务与微服务之间的数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenFeign%E7%9A%84%E4%BD%BF%E7%94%A8%E9%9C%80%E8%A6%81%E5%BC%80%E5%90%AF%E6%B3%A8%E8%A7%A3"><span class="toc-text">OpenFeign的使用需要开启注解</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-text">微服务配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E5%88%B0-Nacos-%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="toc-text">1.添加配置到 Nacos 配置中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8B%89%E5%8F%96%E5%85%B1%E4%BA%AB%E9%85%8D%E7%BD%AE"><span class="toc-text">2.拉取共享配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-text">配置热更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%AA%E5%B4%A9%E9%97%AE%E9%A2%98"><span class="toc-text">雪崩问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E6%96%B9%E6%A1%88"><span class="toc-text">保护方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E6%8A%80%E6%9C%AF"><span class="toc-text">保护技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8-sentinel"><span class="toc-text">1.启动 sentinel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%81%94%E7%B3%BB%E9%A1%B9%E7%9B%AE"><span class="toc-text">2. 联系项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AF%B7%E6%B1%82%E9%99%90%E6%B5%81"><span class="toc-text">3. 请求限流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BA%BF%E7%A8%8B%E9%9A%94%E7%A6%BB"><span class="toc-text">4. 线程隔离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-fallback"><span class="toc-text">5. fallback</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD"><span class="toc-text">6. 服务熔断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="toc-text">7. 持久化保存配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/except2/" title="作业2,使用DOM简单操控页面"><img src="https://img2.imgtp.com/2024/05/03/xx0kJ7X7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="作业2,使用DOM简单操控页面"/></a><div class="content"><a class="title" href="/2024/10/28/except2/" title="作业2,使用DOM简单操控页面">作业2,使用DOM简单操控页面</a><time datetime="2024-10-28T04:00:00.000Z" title="发表于 2024-10-28 12:00:00">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/28/homeWork3/" title="作业3，DOM2，事件流的基本运用"><img src="https://img2.imgtp.com/2024/05/03/v5l3F2sz.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="作业3，DOM2，事件流的基本运用"/></a><div class="content"><a class="title" href="/2024/10/28/homeWork3/" title="作业3，DOM2，事件流的基本运用">作业3，DOM2，事件流的基本运用</a><time datetime="2024-10-28T04:00:00.000Z" title="发表于 2024-10-28 12:00:00">2024-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/08/homeWork5/" title="作业5，使用jQuery修改表格"><img src="https://img2.imgtp.com/2024/05/03/v5l3F2sz.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="作业5，使用jQuery修改表格"/></a><div class="content"><a class="title" href="/2024/05/08/homeWork5/" title="作业5，使用jQuery修改表格">作业5，使用jQuery修改表格</a><time datetime="2024-05-08T14:47:00.000Z" title="发表于 2024-05-08 22:47:00">2024-05-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/29/java-DeviseModel/" title="java设计模式"><img src="https://img2.imgtp.com/2024/05/03/plAmrLGa.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java设计模式"/></a><div class="content"><a class="title" href="/2024/04/29/java-DeviseModel/" title="java设计模式">java设计模式</a><time datetime="2024-04-29T00:34:00.000Z" title="发表于 2024-04-29 08:34:00">2024-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/28/java-Security/" title="Spring Security学习笔记"><img src="https://img2.imgtp.com/2024/05/03/Q4R60m6o.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring Security学习笔记"/></a><div class="content"><a class="title" href="/2024/04/28/java-Security/" title="Spring Security学习笔记">Spring Security学习笔记</a><time datetime="2024-04-28T05:17:00.000Z" title="发表于 2024-04-28 13:17:00">2024-04-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By zlg</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="./source/js/universe.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

@@ -23,7 +23,7 @@
     
     
     <entry>
-      <title>作业三，DOM2，事件流的基本运用</title>
+      <title>作业3，DOM2，事件流的基本运用</title>
       <link href="/2024/10/28/homeWork3/"/>
       <url>/2024/10/28/homeWork3/</url>
       
@@ -33,7 +33,91 @@
       
         <tags>
             
-            <tag> javascript,html,css </tag>
+            <tag> javascript </tag>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>作业5，使用jQuery修改表格</title>
+      <link href="/2024/05/08/homeWork5/"/>
+      <url>/2024/05/08/homeWork5/</url>
+      
+        <content type="html"><![CDATA[<table border="0" cellspacing="0" cellpadding="0" id="myTable">    <tr id="row1">        <td>书名</td>        <td>价格</td>    </tr>    <tr id="row2">        <td>看得见风景的房间</td>        <td class="center">&yen;30.00</td>    </tr>    <tr id="row3">        <td>60个瞬间</td>        <td class="center">&yen;32.00</td>    </tr></table><input name="b1" type="button" value="增加一行" onclick="addRow()" /><input name="b2" type="button" value="删除第2行" onclick="delRow()" /><input name="b3" type="button" value="修改标题样式" onclick="updateRow()" /><input name="b4" type="button" value="复制最后一行" onclick="copyRow()" /><style type="text/css">        body {            font-size: 13px;            line-height: 25px;        }        table {            border-top: 1px solid #333;            border-left: 1px solid #333;            width: 300px;        }        td {            border-right: 1px solid #333;            border-bottom: 1px solid #333;        }        .center {            text-align: center;        }</style><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script><script>        function addRow() {            // 创建新节点            let newRow = $("<tr><td>幸福从天而降</td><td align='center'>&yen;18.50</td></tr>");            // 将节点添加到指定标签后            $("#row1").parent().append(newRow);        }        // 219971147朱良桂        function updateRow() {            // 获取标签后，设置css            $("#row1").css({"font-weight": "bold", "text-align": "center", "background-color": "#cccccc"});        }        function delRow() {            let dRow = document.getElementsByTagName("tr"); //访问被删除的行            if(dRow[2]!=null){                // 删除指定节点                dRow[2].remove();            }        }        function copyRow() {            // 获取table标签的所有子节点            let lastRow = $("#myTable tr:last-child");            // 克隆节点            let newRow = lastRow.clone();            // 将节点添加到指定标签之后            $("#myTable").append(newRow);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java设计模式</title>
+      <link href="/2024/04/29/java-DeviseModel/"/>
+      <url>/2024/04/29/java-DeviseModel/</url>
+      
+        <content type="html"><![CDATA[<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><p>分析：</p><p>定义： 将继承关系变为动态的关系</p><p>角色：</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spring Security学习笔记</title>
+      <link href="/2024/04/28/java-Security/"/>
+      <url>/2024/04/28/java-Security/</url>
+      
+        <content type="html"><![CDATA[<h2 id="通过-security-实现自定义用户认证"><a href="#通过-security-实现自定义用户认证" class="headerlink" title="通过 security 实现自定义用户认证"></a>通过 security 实现自定义用户认证</h2><ol><li>密码加密器（PasswordEncoder） 作用：对用户输入的密码进行加密和校验</li><li>用户登录服务组件 （UserDetailsService） 作用：根据用户名，获取用户的主题</li><li>自定义认证和授权的配置 （SecurityFilterChain） 作用：自定义过滤器链，通过提供的方法来进行过滤器的配置</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户认证</span></span><br><span class="line">    security.formLogin(configurer -&gt;</span><br><span class="line">        configurer.loginPage() <span class="comment">//默认登录页面</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户退出</span></span><br><span class="line">    security.logout(configurer -&gt; configurer.logoutUrl());</span><br></pre></td></tr></table></figure><h2 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h2><p>Spring Security 出现 ‘login.html?error’ is not a valid redirect URL 异常</p><h4 id="报错代码"><a href="#报错代码" class="headerlink" title="报错代码"></a>报错代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户认证</span></span><br><span class="line">security.formLogin(configurer -&gt;</span><br><span class="line">    configurer.loginPage(<span class="string">&quot;users/login&quot;</span>)</span><br><span class="line">            .loginProcessingUrl(<span class="string">&quot;/users/login&quot;</span>)</span><br><span class="line">            .failureUrl(<span class="string">&quot;/users/error&quot;</span>) <span class="comment">// 重定向到失败页面</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>在security的路径配置中，必须在代码前缀加上 “&#x2F;“</p><h4 id="修改后"><a href="#修改后" class="headerlink" title="修改后"></a>修改后</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户认证</span></span><br><span class="line">security.formLogin(configurer -&gt;</span><br><span class="line">    configurer.loginPage(<span class="string">&quot;/users/login&quot;</span>)</span><br><span class="line">            .loginProcessingUrl(<span class="string">&quot;/users/login&quot;</span>)</span><br><span class="line">            .failureUrl(<span class="string">&quot;/users/error&quot;</span>) <span class="comment">// 重定向到失败页面</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><h3 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h3><p>security 的登录失败页面是在原重定向的页面拼接上 “?error” 然后对拼写的页面进行检查然后在类<br>org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler#setDefaultFailureUrl 中进行检查</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDefaultFailureUrl</span><span class="params">(String defaultFailureUrl)</span> &#123;</span><br><span class="line">Assert.isTrue(UrlUtils.isValidRedirectUrl(defaultFailureUrl),</span><br><span class="line">() -&gt; <span class="string">&quot;&#x27;&quot;</span> + defaultFailureUrl + <span class="string">&quot;&#x27; is not a valid redirect URL&quot;</span>);</span><br><span class="line"><span class="built_in">this</span>.defaultFailureUrl = defaultFailureUrl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>使用 UrlUtils.isValidRedirectUrl(defaultFailureUrl) 进行判断</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isValidRedirectUrl</span><span class="params">(String url)</span> &#123;</span><br><span class="line"><span class="keyword">return</span> url != <span class="literal">null</span> &amp;&amp; (url.startsWith(<span class="string">&quot;/&quot;</span>) || isAbsoluteUrl(url));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果返回 true 就加入后缀 如果返回 false 就抛出异常</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微服务的相关学习笔记</title>
+      <link href="/2024/04/27/java-StudyNotes/"/>
+      <url>/2024/04/27/java-StudyNotes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="工具类包-StrUtil"><a href="#工具类包-StrUtil" class="headerlink" title="工具类包-StrUtil"></a>工具类包-StrUtil</h2><p>String字符串工具包 提供了大量的字符串相关方法</p><h3 id="依赖导入"><a href="#依赖导入" class="headerlink" title="依赖导入"></a>依赖导入</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--StringUtils工具类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.12.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StrUtil.方法名()</span><br></pre></td></tr></table></figure><p>isNotBlank</p><p>用于判断字符串是否为空，null，””，等等</p><h2 id="对于不同的包的配置类如何生效"><a href="#对于不同的包的配置类如何生效" class="headerlink" title="对于不同的包的配置类如何生效"></a>对于不同的包的配置类如何生效</h2><p>在resource目录下的 META-INF 创建spring.factories文件<br>早期是使用spring.factories<br>现在改为EnableAutoConfiguration<br>配置类中写对应的类路径</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span></span><br><span class="line"><span class="string">对应类路径</span></span><br></pre></td></tr></table></figure><h3 id="多个路径使用-隔开"><a href="#多个路径使用-隔开" class="headerlink" title="多个路径使用,\隔开"></a>多个路径使用,\隔开</h3><h3 id="对于不想要生效的配置类"><a href="#对于不想要生效的配置类" class="headerlink" title="对于不想要生效的配置类"></a>对于不想要生效的配置类</h3><h4 id="使用-Conditional"><a href="#使用-Conditional" class="headerlink" title="使用 @Conditional"></a>使用 @Conditional</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ConditionalOnClass()</span><br></pre></td></tr></table></figure><p>对于注解@ConditionalOnClass() 参数为 类.class 没有对应类将不进行注入</p><h2 id="微服务与微服务之间的数据传输"><a href="#微服务与微服务之间的数据传输" class="headerlink" title="微服务与微服务之间的数据传输"></a>微服务与微服务之间的数据传输</h2><p>一个微服务在与另一个微服务进行数据交互时用 OpenFeign 发起的远程调用不会自动传递信息</p><p>需要自己定义拦截器，添加请求头</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> RequestInterceptor <span class="title function_">userInfoRequestInterceptor</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RequestInterceptor</span>() &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">apply</span><span class="params">(RequestTemplate template)</span> &#123;</span><br><span class="line">            <span class="type">Long</span> <span class="variable">userId</span> <span class="operator">=</span> UserContext.getUser();</span><br><span class="line">            <span class="keyword">if</span> (userId != <span class="literal">null</span>)&#123;</span><br><span class="line">                template.header(<span class="string">&quot;user-info&quot;</span>, userId.toString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="OpenFeign的使用需要开启注解"><a href="#OpenFeign的使用需要开启注解" class="headerlink" title="OpenFeign的使用需要开启注解"></a>OpenFeign的使用需要开启注解</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients(basePackages = &quot;com.zlg.api.client&quot;,defaultConfiguration = DefaultFeignConfig.class)</span></span><br></pre></td></tr></table></figure><h2 id="微服务配置管理"><a href="#微服务配置管理" class="headerlink" title="微服务配置管理"></a>微服务配置管理</h2><img src="https://img2.imgtp.com/2024/04/27/pERzUWKl.png" alt=""><h3 id="1-添加配置到-Nacos-配置中心"><a href="#1-添加配置到-Nacos-配置中心" class="headerlink" title="1.添加配置到 Nacos 配置中心"></a>1.添加配置到 Nacos 配置中心</h3><img src="https://img2.imgtp.com/2024/04/29/9VPoAAUN.png" alt="" /><p>对于需要动态修改的配置内容使用 “${}” 变量 的方式作为占位符,然后在需要改动的配置中进行变量的赋值</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">hm:</span></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">pw:</span> <span class="number">123</span></span><br></pre></td></tr></table></figure><p>其中 ${ :} 表示如果没有进行变量赋值时的默认值</p><h3 id="2-拉取共享配置"><a href="#2-拉取共享配置" class="headerlink" title="2.拉取共享配置"></a>2.拉取共享配置</h3><p>springCloud 启动的流程</p><img src="https://img2.imgtp.com/2024/04/29/uCqc3iPK.png" alt=""><ol><li>通过xml依赖引入，拉取配置文件和读取 bootstrap 文件</li></ol><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--nacos配置管理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--读取bootstrap文件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><ol start="2"><li>新建 bootstrap.yaml 配置文件 配置nacos和共享配置文件的配置</li></ol><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cart-service</span> <span class="comment"># 微服务名称</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.150</span><span class="number">.101</span> <span class="comment"># nacos地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment"># 文件后缀名</span></span><br><span class="line">        <span class="attr">shared-configs:</span> <span class="comment"># 共享配置</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">dataId:</span> <span class="string">shared-jdbc.yaml</span> <span class="comment"># 共享配置文件id</span></span><br></pre></td></tr></table></figure><h2 id="配置热更新"><a href="#配置热更新" class="headerlink" title="配置热更新"></a>配置热更新</h2><p>通过修改nacos中的配置可以实现不重启项目实现更新项目<br>这边通过配置一个变量来演示</p><p>自定义的配置类和参数</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;hm.cart&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CartProperties</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>  Integer maxItems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>实际的使用场景</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">checkCartsFull</span><span class="params">(Long userId)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> lambdaQuery().eq(Cart::getUserId, userId).count();</span><br><span class="line">    <span class="keyword">if</span> (count &gt;= cartProperties.getMaxItems()) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizIllegalException</span>(StrUtil.format(<span class="string">&quot;用户购物车课程不能超过&#123;&#125;&quot;</span>, cartProperties.getMaxItems()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>nacos 中的配置<br><img src="https://img2.imgtp.com/2024/05/05/biKpxP8Y.png" ><br>nacos 配置的命名规范<br><img src="https://img2.imgtp.com/2024/05/05/vatViBTq.png" ></p><p>然后就可以实现修改nacos中的配置文件达到项目的修改-简称”热更新”</p><h2 id="雪崩问题"><a href="#雪崩问题" class="headerlink" title="雪崩问题"></a>雪崩问题</h2><p>什么是雪崩问题：见名知义，就是在为服务中由于一个微服务模块的故障导致链路中的所有服务都无法使用</p><h3 id="保护方案"><a href="#保护方案" class="headerlink" title="保护方案"></a>保护方案</h3><ol><li>请求限流-流量整形<br>限制接口的请求并发数量，避免服务因流量激增出现故障 将原本忽高忽低的请求量限制在一定的范围上</li><li>线程隔离-舱壁模式<br>模拟船舱隔板的防水原理。通过限定每个业务能够使用的线程数量而将故障隔离，避免故障扩散。</li><li>服务熔断<br>由断路器统计请求的异常比例或调慢比例，如果超出阈值则熔断该业务，则拦截该接口的请求。 熔断期间，所有请求快速失败，全部走fallback逻辑</li></ol><h3 id="保护技术"><a href="#保护技术" class="headerlink" title="保护技术"></a>保护技术</h3><img src="https://img2.imgtp.com/2024/05/05/cYQ1lGBz.png" alt=""><h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h4 id="1-启动-sentinel"><a href="#1-启动-sentinel" class="headerlink" title="1.启动 sentinel"></a>1.启动 sentinel</h4><p>通过阿里巴巴的 sentinel-dashboard 实现<br>下载相关的jar包，使用java虚拟机运行后访问<br>相关启动命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar</span><br></pre></td></tr></table></figure><p>注意: jar包的位置不能存在中文字符</p><p>启动成功后在浏览器输入对应的端口号就能进入登录页面</p><img src="https://img2.imgtp.com/2024/05/06/z6yUPpwP.png" alt=""><p>用户名和密码都是 sentinel<br>进入控制台后就可以通过控制台实现对项目相关的各种控制了</p><h4 id="2-联系项目"><a href="#2-联系项目" class="headerlink" title="2. 联系项目"></a>2. 联系项目</h4><p>导入sentinel依赖</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--sentinel--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-sentinel<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p>配置控制台</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8090</span></span><br></pre></td></tr></table></figure><p>然后访问项目接口就可以实现监控了<br>簇点链路是单机调用链路，默认情况会监控springmvc每一个Endpoint(接口) 也就是controller层的请求<br>但是默认情况下簇点展示的是接口的路径，通过restful风格编设计的接口，有些路径会产生相同路径，需要开启Sentinel的请求方式前缀进行区分</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8090</span></span><br><span class="line">      <span class="attr">http-method-specify:</span> <span class="literal">true</span> <span class="comment"># 开启请求方式前缀</span></span><br></pre></td></tr></table></figure><h4 id="3-请求限流"><a href="#3-请求限流" class="headerlink" title="3. 请求限流"></a>3. 请求限流</h4><p>直接点击相关路径的流控按钮就可以进行限流的的控制</p><img src="https://img2.imgtp.com/2024/05/06/kN2Bp9fa.png" alt=""><h4 id="4-线程隔离"><a href="#4-线程隔离" class="headerlink" title="4. 线程隔离"></a>4. 线程隔离</h4><p>线程需要隔离是因为微服务相互调用导致线程资源的占用<br>涉及到微服务就需要开启Feign的Sentinel功能</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">sentinel:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启feign对sentinel的支持</span></span><br></pre></td></tr></table></figure><p>小提示： 默认情况下tomcat最大线程数是200,允许的最大连接是8192<br>开启之后，远程调用微服务的请求就会被识别为一个簇点资源<br>然后对相关簇点进行限流就可以了</p><h4 id="5-fallback"><a href="#5-fallback" class="headerlink" title="5. fallback"></a>5. fallback</h4><p>对于触发了限流或者熔断的操作并非需要抛出异常，这是就可以使用fallback的方式，使用日志的形式来处理此类情况<br>给FeignClient编写失败后的降级逻辑有两种方式</p><ol><li>FallbackClass 缺点：无法对远程调用的异常做出处理（偏向于快速启用的偷懒方式）</li><li>FallbackFactory 可以对远程调用的异常做出处理，一般采取这种方式</li></ol><p>使用FallbackFactory的方式</p><ol><li>在公共的微服务请求转发模块建立工厂</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ItemClientFallback</span> <span class="keyword">implements</span> <span class="title class_">FallbackFactory</span>&lt;ItemClient&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> ItemClient <span class="title function_">create</span><span class="params">(Throwable cause)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ItemClient</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> List&lt;ItemDTO&gt; <span class="title function_">queryItemByIds</span><span class="params">(Collection&lt;Long&gt; ids)</span> &#123;</span><br><span class="line">                log.error(<span class="string">&quot;远程调用ItemClient#queryItemByIds方法出现异常，参数：&#123;&#125;&quot;</span>, ids, cause);</span><br><span class="line">                <span class="comment">// 查询购物车允许失败，查询失败，返回空集合</span></span><br><span class="line">                <span class="keyword">return</span> CollUtils.emptyList();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deductStock</span><span class="params">(List&lt;OrderDetailDTO&gt; items)</span> &#123;</span><br><span class="line">                <span class="comment">// 库存扣减业务需要触发事务回滚，查询失败，抛出异常</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizIllegalException</span>(cause);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>核心部分在于继承 FallbackFactory 接口 和请求失败后的业务逻辑处理</p><ol start="2"><li>然后将工厂注册为bean</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ItemClientFallback <span class="title function_">itemClientFallback</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ItemClientFallback</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>最后在定义的转发接口中使用工厂</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;item-service&quot;,</span></span><br><span class="line"><span class="meta">        configuration = DefaultFeignConfig.class,</span></span><br><span class="line"><span class="meta">        fallback = ItemClientFallback.class)</span></span><br></pre></td></tr></table></figure><h4 id="6-服务熔断"><a href="#6-服务熔断" class="headerlink" title="6. 服务熔断"></a>6. 服务熔断</h4><p>熔断的过程<br><img src="https://img2.imgtp.com/2024/05/07/dfekcDUQ.png"></p><p>熔断配置<br><img src="https://img2.imgtp.com/2024/05/07/N76s3wgw.png"></p><h4 id="7-持久化保存配置"><a href="#7-持久化保存配置" class="headerlink" title="7. 持久化保存配置"></a>7. 持久化保存配置</h4><p>使用jar包启动的控制台配置，在刷新页面就会丢失相应的配置<br>所有需要持久化的保存的话需要新的方法<br>这里使用的是nacos的方式进行配置的持久化保存</p><ol><li>引入依赖</li></ol><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-datasource-nacos<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p>具体的版本号要和sentinel的版本号对应</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
             
         </tags>
       
@@ -52,26 +136,11 @@
       
         <tags>
             
-            <tag> css,javascript,html </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>闭包</title>
-      <link href="/2024/04/06/homeWork2/"/>
-      <url>/2024/04/06/homeWork2/</url>
-      
-        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
             <tag> javascript </tag>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
             
         </tags>
       
@@ -97,30 +166,27 @@
     </entry>
     
     
-  
-  
-    
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>闭包</title>
+      <link href="/2024/04/06/homeWork2/"/>
+      <url>/2024/04/06/homeWork2/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="作业2"><a href="#作业2" class="headerlink" title="作业2"></a>作业2</h2><h3 id="简单的闭包的实现"><a href="#简单的闭包的实现" class="headerlink" title="简单的闭包的实现"></a>简单的闭包的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> ++num;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="title function_">fn</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">count</span>())</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
       
     </entry>
     
     
-    
-    <entry>
-      <title>tags</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
+  
+  
     
     
     <entry>
@@ -135,9 +201,42 @@
     
     
     <entry>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
