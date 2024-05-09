@@ -35,9 +35,9 @@
             
             <tag> javascript </tag>
             
-            <tag> css </tag>
-            
             <tag> html </tag>
+            
+            <tag> css </tag>
             
         </tags>
       
@@ -58,9 +58,9 @@
             
             <tag> javascript </tag>
             
-            <tag> css </tag>
-            
             <tag> html </tag>
+            
+            <tag> css </tag>
             
         </tags>
       
@@ -138,9 +138,9 @@
             
             <tag> javascript </tag>
             
-            <tag> css </tag>
-            
             <tag> html </tag>
+            
+            <tag> css </tag>
             
         </tags>
       
@@ -201,6 +201,17 @@
     
     
     <entry>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
@@ -215,17 +226,6 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
