@@ -35,9 +35,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -58,9 +58,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -138,9 +138,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -201,17 +201,6 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/movies/index.html"/>
       <url>/movies/index.html</url>
@@ -223,9 +212,9 @@
     
     
     <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -234,9 +223,20 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
