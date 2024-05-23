@@ -46,7 +46,7 @@
     
     
     <entry>
-      <title>实验5，</title>
+      <title>实验5，自主实现注册页面</title>
       <link href="/2024/05/23/homeWork8/"/>
       <url>/2024/05/23/homeWork8/</url>
       
@@ -272,9 +272,9 @@
     
     
     <entry>
-      <title>link</title>
-      <link href="/link/link.html"/>
-      <url>/link/link.html</url>
+      <title>编码时遇到的错误</title>
+      <link href="/errorNotes.html"/>
+      <url>/errorNotes.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -294,9 +294,9 @@
     
     
     <entry>
-      <title>编码时遇到的错误</title>
-      <link href="/errorNotes.html"/>
-      <url>/errorNotes.html</url>
+      <title>link</title>
+      <link href="/link/link.html"/>
+      <url>/link/link.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -305,9 +305,9 @@
     
     
     <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -327,9 +327,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
