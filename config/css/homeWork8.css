@@ -1,0 +1,62 @@
+body {
+    background: url("https://img2.imgtp.com/2024/05/21/CP7YxrlN.jpg");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+.div {
+    background: rgb(0, 0, 0, 1) url("https://img2.imgtp.com/2024/05/21/gqsxWUC3.png");
+    width: 500px;
+    height: 500px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-align: center;
+    margin: 200px auto auto;
+}
+.div p {
+    padding: 30px 0;
+    font-size: 30px;
+}
+.ul {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
+.ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.ul li span {
+    width: 80px;
+    text-align: right;
+}
+.ul li input {
+    width: 228px;
+    height: 30px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding-left: 20px;
+    outline: none;
+    margin-left: 10px;
+}
+.ul li button {
+    color: #ffffff;
+    background-color: aqua;
+    font-size: 16px;
+    padding: 10px 60px;
+    outline: inherit;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+.user_hint,
+.password_hint,
+.confirm_hint,
+.email_hint,
+.mobile_hint {
+    margin-left: 10px;
+    font-size: 16px;
+}

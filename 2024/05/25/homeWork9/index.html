@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册</title>
+    <title>判断用户名</title>
 </head>
 <style>
 body {
@@ -85,12 +85,12 @@ font-size: 16px;
         <ul class="ul">
             <li>
                 <span>用户名：</span>
-                <input type="text" name="username" value="" placeholder="4-8位用户名，由数字或字母组成" class="user">
+                <input type="text" id="username" name="username" value="" placeholder="4-8位用户名" class="user">
                 <span class="user_hint"></span>
             </li>
             <li>
                 <span>密码：</span>
-                <input type="password" name="psd" placeholder="6-16位密码,由数字或字母组成" class="password">
+                <input type="password" name="psd" placeholder="6-16位密码" class="password">
                 <span class="password_hint"></span>
             </li>
             <li>
@@ -109,7 +109,7 @@ font-size: 16px;
                 <span class="mobile_hint"></span>
             </li>
             <li>
-                <button type="reset" class="reset" onclick="reset" >重置</button>&nbsp;&nbsp;
+                <button type="reset" class="reset" onclick="reset">重置</button>&nbsp;&nbsp;
                 <button type="button" class="button">确认</button>
             </li>
         </ul>
@@ -128,8 +128,25 @@ font-size: 16px;
     $('.user').blur(function () {
         // 使用正则表达式判断用户名是否为数字和字符的组合且在4-8位
         if ((/^[a-z0-9_-]{4,8}$/).test($(".user").val())) {
-            // 满足条件就显示正确的图案，✔
-            $('.user_hint').html("✔").css("color", "green");
+            // 获取标签
+            let user = document.querySelector("#username")
+            let xhr = new XMLHttpRequest();
+            let url = "https://mock.apifox.com/m1/4538608-4186405-default/users/verification";
+            url += "?username=" + user.value;
+            xhr.open("GET", url, true);
+            xhr.send();
+            // 219971147朱良桂
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let result = xhr.responseText;
+                    if (result === "1") {
+                        $('.user_hint').html("用户名已经存在").css("color", "red");
+                        user_Boolean = false;
+                    } else {
+                        $('.user_hint').html("√").css("color", "green");
+                    }
+                }
+            }
             // 修改用户名的标志
             user_Boolean = true;
         } else {
@@ -161,6 +178,8 @@ font-size: 16px;
     });
     // Email
     $('.email').blur(function () {
+        // [a-z\d]+：匹配一个或多个小写字母或数字，([\da-z](-[\da-z])?)+：匹配一个或多个字母或数字，后面可选地跟着一个连字符和一个字母或数字
+        // (\.{1,2}[a-z]+)+：匹配一个或两个点后面跟着一个或多个小写字母
         if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".email").val())) {
             $('.email_hint').html("✔").css("color", "green");
             email_Boolean = true;
@@ -190,7 +209,7 @@ font-size: 16px;
         }
     });
     // 重置按钮点击事件
-    let reset  = function (){
+    let reset = function () {
         $('.reset').click(function () {
             // 清空输入框的值
             $('.user').val('');
