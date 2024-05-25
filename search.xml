@@ -35,9 +35,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -58,9 +58,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
             <tag> jquery </tag>
             
@@ -83,9 +83,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -106,9 +106,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
             <tag> jquery </tag>
             
@@ -131,9 +131,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -154,9 +154,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -234,9 +234,9 @@
             
             <tag> javascript </tag>
             
-            <tag> html </tag>
-            
             <tag> css </tag>
+            
+            <tag> html </tag>
             
         </tags>
       
@@ -286,17 +286,6 @@
     
     
     <entry>
-      <title>RabbitMQ笔记</title>
-      <link href="/MQ-Notes.html"/>
-      <url>/MQ-Notes.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="workQueue"><a href="#workQueue" class="headerlink" title="workQueue"></a>workQueue</h2><p>任务队列，一个队列绑定多个消费者，没配置前队列中的消息被消费者平均分配</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">listener:</span></span><br><span class="line">      <span class="attr">simple:</span></span><br><span class="line">        <span class="attr">prefetch:</span> <span class="number">1</span> <span class="comment"># 每次获取1条消息，处理完了才能获取下一条</span></span><br></pre></td></tr></table></figure><p>通过上面的配置，就使得普通队列会通过消费者的处理快慢来分配任务</p><h2 id="FanoutExchange"><a href="#FanoutExchange" class="headerlink" title="FanoutExchange"></a>FanoutExchange</h2><p>消息传递到交换机后，会发送给每一个队列</p><h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol><li>构建交换机</li><li>构建队列</li><li>绑定交换机和队列</li><li>在消费者中监听队列</li></ol><h2 id="DirectExchange"><a href="#DirectExchange" class="headerlink" title="DirectExchange"></a>DirectExchange</h2><p>消息传递给交换机后，根据规则指定发送给固定的queue，被称为定向路由<br>步骤和FanoutExchange 一致，只是构建队列时需要指定对应的routingkey,发送消息时也要指定对应key。<br>一个队列可以有多个key</p><h2 id="TopicExchange"><a href="#TopicExchange" class="headerlink" title="TopicExchange"></a>TopicExchange</h2><p>key的设置有通配符的参与。<br>key与通配符使用 “.” 分割开，#代表0或者多个单词，*代表一个单词</p><h2 id="基于注解开发"><a href="#基于注解开发" class="headerlink" title="基于注解开发"></a>基于注解开发</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">        value = @Queue(name = &quot;direct&quot;),</span></span><br><span class="line"><span class="meta">        exchange = @Exchange(name = &quot;hmall.direct&quot;,type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">        key = &#123;&quot;red&quot;,&quot;blue&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">listenDirectQueue</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者2接收到了消息:&quot;</span>+msg+ LocalTime.now());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h2><p>依赖的引入</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">&lt;!--Jackson--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.dataformat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-dataformat-xml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p>装配bean</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> MessageConverter <span class="title function_">jacksonMessageConvertor</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Jackson2JsonMessageConverter</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>编码时遇到的错误</title>
       <link href="/errorNotes.html"/>
       <url>/errorNotes.html</url>
@@ -308,11 +297,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>RabbitMQ笔记</title>
+      <link href="/MQ-Notes.html"/>
+      <url>/MQ-Notes.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="workQueue"><a href="#workQueue" class="headerlink" title="workQueue"></a>workQueue</h2><p>任务队列，一个队列绑定多个消费者，没配置前队列中的消息被消费者平均分配</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">rabbitmq:</span></span><br><span class="line">    <span class="attr">listener:</span></span><br><span class="line">      <span class="attr">simple:</span></span><br><span class="line">        <span class="attr">prefetch:</span> <span class="number">1</span> <span class="comment"># 每次获取1条消息，处理完了才能获取下一条</span></span><br></pre></td></tr></table></figure><p>通过上面的配置，就使得普通队列会通过消费者的处理快慢来分配任务</p><h2 id="FanoutExchange"><a href="#FanoutExchange" class="headerlink" title="FanoutExchange"></a>FanoutExchange</h2><p>消息传递到交换机后，会发送给每一个队列</p><h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol><li>构建交换机</li><li>构建队列</li><li>绑定交换机和队列</li><li>在消费者中监听队列</li></ol><h2 id="DirectExchange"><a href="#DirectExchange" class="headerlink" title="DirectExchange"></a>DirectExchange</h2><p>消息传递给交换机后，根据规则指定发送给固定的queue，被称为定向路由<br>步骤和FanoutExchange 一致，只是构建队列时需要指定对应的routingkey,发送消息时也要指定对应key。<br>一个队列可以有多个key</p><h2 id="TopicExchange"><a href="#TopicExchange" class="headerlink" title="TopicExchange"></a>TopicExchange</h2><p>key的设置有通配符的参与。<br>key与通配符使用 “.” 分割开，#代表0或者多个单词，*代表一个单词</p><h2 id="基于注解开发"><a href="#基于注解开发" class="headerlink" title="基于注解开发"></a>基于注解开发</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener(bindings = @QueueBinding(</span></span><br><span class="line"><span class="meta">        value = @Queue(name = &quot;direct&quot;),</span></span><br><span class="line"><span class="meta">        exchange = @Exchange(name = &quot;hmall.direct&quot;,type = ExchangeTypes.DIRECT),</span></span><br><span class="line"><span class="meta">        key = &#123;&quot;red&quot;,&quot;blue&quot;&#125;</span></span><br><span class="line"><span class="meta">))</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">listenDirectQueue</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;消费者2接收到了消息:&quot;</span>+msg+ LocalTime.now());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h2><p>依赖的引入</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">&lt;!--Jackson--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.dataformat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-dataformat-xml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p>装配bean</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> MessageConverter <span class="title function_">jacksonMessageConvertor</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Jackson2JsonMessageConverter</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
     </entry>
     
@@ -322,17 +311,6 @@
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -352,9 +330,31 @@
     
     
     <entry>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
