@@ -1,0 +1,224 @@
+---
+title: "实验5，自主实现注册页面"
+date: 2024-05-23 10:06:00
+tags: [ "html","css","javascript" ]
+layout: "false"
+---
+
+{% raw %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+</head>
+<style>
+body {
+    background: url("https://img2.imgtp.com/2024/05/21/CP7YxrlN.jpg");
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.div {
+background: rgb(0, 0, 0, 1) url("https://t.tutu.to/img/37l5");
+width: 500px;
+height: 500px;
+border: 1px solid #333;
+border-radius: 5px;
+text-align: center;
+margin: 200px auto auto;
+}
+
+.div p {
+padding: 30px 0;
+font-size: 30px;
+}
+
+.ul {
+width: 100%;
+padding: 0;
+list-style: none;
+}
+
+.ul li {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 10px 0;
+}
+
+.ul li span {
+width: 80px;
+text-align: right;
+}
+
+.ul li input {
+width: 228px;
+height: 30px;
+border: 1px solid #333;
+border-radius: 3px;
+padding-left: 20px;
+outline: none;
+margin-left: 10px;
+}
+
+.ul li button {
+color: #ffffff;
+background-color: aqua;
+font-size: 16px;
+padding: 10px 60px;
+outline: inherit;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+margin: 20px 0;
+}
+
+.user_hint,
+.password_hint,
+.confirm_hint,
+.email_hint,
+.mobile_hint {
+margin-left: 10px;
+font-size: 16px;
+}
+
+</style>
+
+<body>
+<div class="div">
+    <p>注册</p>
+    <form>
+        <ul class="ul">
+            <li>
+                <span>用户名：</span>
+                <input type="text" name="username" value="" placeholder="4-8位用户名，由数字或字母组成" class="user">
+                <span class="user_hint"></span>
+            </li>
+            <li>
+                <span>密码：</span>
+                <input type="password" name="psd" placeholder="6-16位密码,由数字或字母组成" class="password">
+                <span class="password_hint"></span>
+            </li>
+            <li>
+                <span>确认密码：</span>
+                <input type="password" name="" placeholder="确认密码" class="confirm">
+                <span class="confirm_hint"></span>
+            </li>
+            <li>
+                <span>邮箱：</span>
+                <input type="text" name="email" placeholder="邮箱" class="email">
+                <span class="email_hint"></span>
+            </li>
+            <li>
+                <span>电话：</span>
+                <input type="tel" name="mobile" value="" placeholder="手机号" class="mobile">
+                <span class="mobile_hint"></span>
+            </li>
+            <li>
+                <button type="reset" class="reset" onclick="reset" >重置</button>&nbsp;&nbsp;
+                <button type="button" class="button">确认</button>
+            </li>
+        </ul>
+    </form>
+</div>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    // user
+    // 表单信息的完整性
+    let user_Boolean = false;
+    let password_Boolean = false;
+    let confirm_Boolean = false;
+    let email_Boolean = false;
+    let Mobile_Boolean = false;
+    $('.user').blur(function () {
+        // 使用正则表达式判断用户名是否为数字和字符的组合且在4-8位
+        if ((/^[a-z0-9_-]{4,8}$/).test($(".user").val())) {
+            // 满足条件就显示正确的图案，✔
+            $('.user_hint').html("✔").css("color", "green");
+            // 修改用户名的标志
+            user_Boolean = true;
+        } else {
+            $('.user_hint').html("×").css("color", "red");
+            user_Boolean = false;
+        }
+    });
+    // password
+    $('.password').blur(function () {
+        // 使用正则表达式判断密码是否为数字和字符，且在6-16位
+        if ((/^[a-z0-9_-]{6,16}$/).test($(".password").val())) {
+            $('.password_hint').html("✔").css("color", "green");
+            password_Boolean = true;
+        } else {
+            $('.password_hint').html("×").css("color", "red");
+            password_Boolean = false;
+        }
+    });
+    // password_confirm
+    $('.confirm').blur(function () {
+        // 判断两次密码输入是否一致
+        if (($(".password").val()) === ($(".confirm").val())) {
+            $('.confirm_hint').html("✔").css("color", "green");
+            confirm_Boolean = true;
+        } else {
+            $('.confirm_hint').html("×").css("color", "red");
+            confirm_Boolean = false;
+        }
+    });
+    // Email
+    $('.email').blur(function () {
+        if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/).test($(".email").val())) {
+            $('.email_hint').html("✔").css("color", "green");
+            email_Boolean = true;
+        } else {
+            $('.email_hint').html("×").css("color", "red");
+            email_Boolean = false;
+        }
+    });
+    // Mobile
+    $('.mobile').blur(function () {
+        if ((/^1[345789]\d{9}$/).test($(".mobile").val())) {
+            $('.mobile_hint').html("✔").css("color", "green");
+            Mobile_Boolean = true;
+        } else {
+            $('.mobile_hint').html("×").css("color", "red");
+            Mobile_Boolean = false;
+        }
+    });
+    // click
+    $('.button').click(function () {
+        // 判断所有的输入是否满足标准
+        if (user_Boolean && password_Boolean && confirm_Boolean && email_Boolean && Mobile_Boolean) {
+            alert("注册成功");
+            reset();
+        } else {
+            alert("表格信息有误");
+        }
+    });
+    // 重置按钮点击事件
+    let reset  = function (){
+        $('.reset').click(function () {
+            // 清空输入框的值
+            $('.user').val('');
+            $('.password').val('');
+            $('.confirm').val('');
+            $('.email').val('');
+            $('.mobile').val('');
+            // 清空提示信息
+            $('.user_hint').html('');
+            $('.password_hint').html('');
+            $('.confirm_hint').html('');
+            $('.email_hint').html('');
+            $('.mobile_hint').html('');
+            // 重置标志值
+            user_Boolean = false;
+            password_Boolean = false;
+            confirm_Boolean = false;
+            email_Boolean = false;
+            Mobile_Boolean = false;
+        });
+    }
+</script>
+</body>
+{% endraw %}
